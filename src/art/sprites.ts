@@ -121,6 +121,20 @@ export const CAT: Sprite = [
   '...9999999..b.',
 ]
 
+/** Bola de gato dormido: orejas asomando, colita enroscada. */
+export const KITTEN: Sprite = [
+  '..9....9...',
+  '.99aaaaa9..',
+  '9aaaaaaaa9.',
+  'aaaaaaaaaa9',
+  '9aaaaaaaa9.',
+  '.9aaaaaa9..',
+  '..999999...',
+]
+
+/** Una "z" de sueño, color luz de luna. Se dibuja flotando y desvaneciéndose. */
+export const ZZZ: Sprite = ['hhh', '.h.', 'hhh']
+
 export const BENCH: Sprite = [
   '..bbbbbbbbbbbbbbbbbbbb..',
   '..baaaaaaaaaaaaaaaaaab..',

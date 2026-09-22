@@ -86,6 +86,8 @@ export function bakeAll(): void {
 
   put('seed', S.SEED)
   put('cat', S.CAT)
+  put('kitten', S.KITTEN)
+  put('zzz', S.ZZZ)
   put('bench', S.BENCH)
   put('sign', S.SIGN)
   put('mailbox', S.MAILBOX)

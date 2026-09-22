@@ -52,6 +52,7 @@ const GAPS: [number, number][] = [
 
 type Step = { x: number; y: number; reveal: number }
 type Firefly = { x: number; y: number; p: number; sp: number; home: number }
+type Kitten = { x: number; y: number; p: number }
 
 export class CrossingScene implements Scene {
   private bg = document.createElement('canvas')
@@ -60,6 +61,7 @@ export class CrossingScene implements Scene {
   private stars: { x: number; y: number; p: number }[] = []
   private steps: Step[] = []
   private fireflies: Firefly[] = []
+  private kittens: Kitten[] = []
   private seeds: { x: number; y: number; taken: boolean }[] = []
   private solids: Rect[] = []
   private t = 0
@@ -161,6 +163,17 @@ export class CrossingScene implements Scene {
           home,
         })
       }
+    }
+
+    // Gatitos dormidos en la orilla de cada tramo de río, a salvo del camino.
+    for (const [x0, x1] of GAPS) {
+      const side = rng() < 0.5 ? -1 : 1
+      const kx = side < 0 ? x0 - randRange(rng, 8, 20) : x1 + randRange(rng, 8, 20)
+      const ky =
+        rng() < 0.5
+          ? randInt(rng, GROUND_TOP + 6, BAND_TOP - 8)
+          : randInt(rng, BAND_TOP + BAND_H + 4, H - 8)
+      this.kittens.push({ x: kx, y: ky, p: rng() * Math.PI * 2 })
     }
   }
 
@@ -266,6 +279,21 @@ export class CrossingScene implements Scene {
       const sx = s.x - cam
       if (sx < -10 || sx > W + 10) continue
       drawSpriteAt(ctx, 'seed', sx - 3, s.y - 6)
+    }
+
+    // Gatitos dormidos: respiran despacio junto al río y sueltan algún zzz.
+    for (const k of this.kittens) {
+      const kx = k.x - cam
+      if (kx < -14 || kx > W + 14) continue
+      const breathe = Math.sin(this.t * 1.1 + k.p) * 0.6
+      drawSpriteAt(ctx, 'kitten', kx - 5, k.y - 7 + breathe)
+      const zp = (this.t * 0.5 + k.p) % (Math.PI * 2)
+      if (zp < Math.PI) {
+        const rise = zp / Math.PI
+        ctx.globalAlpha = 1 - rise
+        drawSpriteAt(ctx, 'zzz', kx + 3, k.y - 12 - rise * 8)
+        ctx.globalAlpha = 1
+      }
     }
 
     // Él siempre detrás: se dibuja primero para que ella quede delante.
