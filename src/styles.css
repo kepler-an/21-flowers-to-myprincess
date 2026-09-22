@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background: #0a0b10;
+  overflow: hidden;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  cursor: default;
+}
+
+body.playing {
+  cursor: none;
+}
+
+#stage {
+  position: relative;
+  line-height: 0;
+}
+
+#screen {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  /* el tamaño real lo fija el renderer por escala entera */
+}
+
+/* Copia accesible del texto en pantalla: el juego dibuja su propia tipografía
+   bitmap, pero el contenido sigue estando disponible para lectores de pantalla
+   y para seleccionar/copiar. */
+#overlay {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
