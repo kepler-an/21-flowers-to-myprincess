@@ -4,8 +4,6 @@
  *  Puedes editar este archivo entero sin tocar nada más. No hay lógica dentro.
  *
  *  Reglas que conviene respetar al editar:
- *   · Las líneas del jardín NO deben delatar el propósito del juego.
- *     Cuanto más inocentes parezcan, mejor funciona el final.
  *   · Cada línea del jardín se parte sola si es larga, pero por debajo de
  *     ~44 caracteres se lee mucho mejor.
  *   · La carta final admite las líneas que quieras; si pones muchas, el juego
@@ -22,15 +20,15 @@ export const content = {
     hint: 'flechas o WASD para moverte',
   },
 
-  /** Pequeños mensajes de los objetos del jardín. Tono seco, nada de romance. */
+  /** Pequeños mensajes de los objetos del jardín. Tono cariñoso, con apodos y corazones de píxeles. */
   garden: {
-    sign: 'JARDÍN.\nNo pisar lo que apenas empieza.',
-    bench: 'Un banco para dos.\nCasi siempre lo usa el gato.',
-    cat: 'Duerme.\nHa decidido que hoy tampoco.',
-    can: 'Una regadera vacía.\nAlguien se olvidó de llenarla otra vez.',
-    mailbox: 'Un buzón.\nDentro no hay nada. Todavía.',
-    gate: 'La verja está abierta.\nEl camino sigue hacia el este.',
-    gateLocked: 'Todavía queda algo entre la hierba.',
+    sign: 'JARDÍN, mi princesa hermosa.\nNo pises lo que apenas empieza. ♥',
+    bench: 'Un banco para dos, Mi Sol.\nCasi siempre lo usa el gato. ♥',
+    cat: 'Duerme, cosita bella.\nHa decidido que hoy tampoco. ♥',
+    can: 'Una regadera vacía, mi amor.\nAlguien se olvidó de llenarla otra vez. ♥',
+    mailbox: 'Un buzón, princesa.\nDentro no hay nada. Todavía... para ti. ♥',
+    gate: 'La verja está abierta, mi Sol.\nEl camino sigue hacia el este. ♥',
+    gateLocked: 'Todavía queda algo entre la hierba,\ncosita bella. ♥',
   },
 
   /** Único texto de la travesía nocturna. Aparece una vez y se va. */
